@@ -1,0 +1,9 @@
+version: '3'
+
+services: 
+    hello_world:
+        image: hello-world:latest
+
+networks:
+  default:
+    name: main_network

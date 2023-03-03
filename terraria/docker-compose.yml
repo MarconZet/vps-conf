@@ -12,3 +12,8 @@ services:
       - ./config:/config
     tty: true
     stdin_open: true
+
+networks:
+  default:
+    name: main_network
+    external: true

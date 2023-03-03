@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  foundry:
+    image: felddy/foundryvtt:release
+    hostname: foundary_host
+    init: true
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+    ports:
+      - target: 30000
+        published: 22300
+        protocol: tcp
+    secrets:
+      - source: config_json
+        target: config.json
+
+secrets:
+  config_json:
+    file: secrets.json
+
+networks:
+  default:
+    name: main_network
+    external: true

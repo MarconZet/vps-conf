@@ -2,8 +2,7 @@ version: "3"
 
 services:
   foundry:
-    image: felddy/foundryvtt:release
-    hostname: foundary_host
+    image: felddy/foundryvtt:release-10.290.0
     init: true
     volumes:
       - type: bind
@@ -16,6 +15,8 @@ services:
     secrets:
       - source: config_json
         target: config.json
+    extra_hosts:
+      - "foundryvtt.s3.amazonaws.com:52.92.209.74"
 
 secrets:
   config_json:

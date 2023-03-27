@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+    - ./conf.d:/etc/nginx/conf.d
+    ports:
+     - target: 80
+       published: 22080
+       protocol: tcp
+    command: [nginx-debug, '-g', 'daemon off;']
+  # web-socket:
+  #   image: ksdn117/web-socket-test
+  #   ports:
+  #     - target: 8010
+  #       published: 22081
+  #       protocol: tcp
+
+networks:
+  default:
+    name: main_network
+    external: true

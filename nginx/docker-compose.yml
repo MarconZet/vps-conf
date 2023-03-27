@@ -7,7 +7,6 @@ services:
     - ./conf.d:/etc/nginx/conf.d
     ports:
     - "80:80"
-    command: [nginx-debug, '-g', 'daemon off;']
 
 networks:
   default:

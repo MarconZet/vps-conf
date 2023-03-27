@@ -1,21 +1,26 @@
 version: "3"
 
 services:
-  nginx:
+  nginx-my:
     image: nginx:latest
     volumes:
     - ./conf.d:/etc/nginx/conf.d
+    command: [nginx-debug, '-g', 'daemon off;']
+  nginx-dd:
+    image: nginx:latest
+    volumes:
+    - ./conf.d2:/etc/nginx/conf.d
     ports:
      - target: 80
-       published: 22080
+       published: 22081
        protocol: tcp
     command: [nginx-debug, '-g', 'daemon off;']
-  # web-socket:
-  #   image: ksdn117/web-socket-test
-  #   ports:
-  #     - target: 8010
-  #       published: 22081
-  #       protocol: tcp
+  web-socket:
+    image: ksdn117/web-socket-test
+    ports:
+      - target: 8010
+        published: 22082
+        protocol: tcp
 
 networks:
   default:

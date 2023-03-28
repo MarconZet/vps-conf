@@ -5,8 +5,10 @@ services:
     image: nginx:latest
     volumes:
     - ./conf.d:/etc/nginx/conf.d
+    - /var/www/html/.well-known/acme-challenge:/var/www/html/.well-known/acme-challenge
     ports:
     - "80:80"
+    - "443:443"
 
 networks:
   default:

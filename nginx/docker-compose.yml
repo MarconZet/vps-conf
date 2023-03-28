@@ -6,6 +6,7 @@ services:
     volumes:
     - ./conf.d:/etc/nginx/conf.d
     - /var/www/html/.well-known/acme-challenge:/var/www/html/.well-known/acme-challenge
+    - /etc/letsencrypt:/var/certs
     ports:
     - "80:80"
     - "443:443"

@@ -7,7 +7,7 @@ services:
       - '22777:22777'
     restart: unless-stopped
     environment:
-      - world=test.wld
+      - world=The_Mass_of_Surprise.wld
     volumes:
       - ./config:/config
     tty: true

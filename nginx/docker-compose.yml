@@ -4,9 +4,10 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-    - ./conf.d:/etc/nginx/conf.d
+    - ./conf.d:/etc/nginx/conf.d:ro
     - /var/www/html/.well-known/acme-challenge:/var/www/html/.well-known/acme-challenge
-    - /etc/letsencrypt:/var/certs
+    - /etc/letsencrypt:/var/certs:ro
+    - ./landing/index.html:/var/www/html/index.html:ro
     ports:
     - "80:80"
     - "443:443"
@@ -15,3 +16,6 @@ networks:
   default:
     name: main_network
     external: true
+
+# For generating certs:
+# sudo certbot certonly --webroot --webroot-path /var/www/html/ -d marconzet.pl

@@ -3,6 +3,7 @@ version: "3"
 services:
   nginx:
     image: nginx:latest
+    restart: unless-stopped
     volumes:
     - ./conf.d:/etc/nginx/conf.d:ro
     - /var/www/html/.well-known/acme-challenge:/var/www/html/.well-known/acme-challenge

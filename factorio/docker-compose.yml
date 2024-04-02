@@ -3,6 +3,7 @@ version: "3"
 services:
   factorio:
     image: factoriotools/factorio:1.1.104
+    restart: unless-stopped
     ports:
       - target: 34197
         published: 22301

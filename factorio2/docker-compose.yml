@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  factorio:
+    image: factoriotools/factorio:1.1.107
+    restart: unless-stopped
+    ports:
+      - target: 34197
+        published: 22302
+        protocol: udp
+    volumes:
+     - /opt/factorio2:/factorio
+     - ./server-settings.json:/server-settings.json
+    environment:
+      - UPDATE_MODS_ON_START=false
+      - GENERATE_NEW_SAVE=true
+      - SAVE_NAME=sav

@@ -9,6 +9,7 @@ services:
     - /var/www/html/.well-known/acme-challenge:/var/www/html/.well-known/acme-challenge
     - /etc/letsencrypt:/var/certs:ro
     - ./landing/index.html:/var/www/html/index.html:ro
+    - ./landing/assets:/var/www/html/assets:ro
     ports:
     - "80:80"
     - "443:443"

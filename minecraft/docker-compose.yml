@@ -1,0 +1,39 @@
+services:
+  minecarft:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "22565:25565"
+    environment:
+      EULA: "TRUE"
+      DEBUG: "true"
+      INIT_MEMORY: 1G
+      MAX_MEMORY: 4G
+      MOTD: "A §l§cMinecraft§r §nserver"
+      ICON: "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/2880px-Flag_of_Germany.svg.png"
+      OPS: |
+        Masunka
+    volumes:
+      - data:/data
+    restart: always
+  vsftpd:
+    image: fauria/vsftpd
+    restart: always
+    ports:
+      - "22020:20"
+      - "22021:21"
+      - "22900-22910:22900-22910"
+    environment:
+      FTP_USER: "ftp"
+      FTP_PASS: "mypass"
+      PASV_ADDRESS: "marconzet.pl"
+      PASV_ADDR_RESOLVE: "YES"
+      PASV_MIN_PORT: "22900"
+      PASV_MAX_PORT: "22910"
+    volumes:
+      - data:/home/vsftpd/ftp/data
+
+volumes:
+  data: {}
+

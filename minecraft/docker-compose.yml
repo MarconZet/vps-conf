@@ -17,22 +17,13 @@ services:
     volumes:
       - data:/data
     restart: always
-  vsftpd:
-    image: fauria/vsftpd
-    restart: always
+  filebrowser:
+    image: filebrowser/filebrowser
     ports:
-      - "22020:20"
-      - "22021:21"
-      - "22900-22910:22900-22910"
-    environment:
-      FTP_USER: "ftp"
-      FTP_PASS: "mypass"
-      PASV_ADDRESS: "marconzet.pl"
-      PASV_ADDR_RESOLVE: "YES"
-      PASV_MIN_PORT: "22900"
-      PASV_MAX_PORT: "22910"
+      - "22900:80"
     volumes:
-      - data:/home/vsftpd/ftp/data
+      - data:/srv
+    restart: unless-stopped
 
 volumes:
   data: {}

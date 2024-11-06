@@ -17,6 +17,7 @@ services:
       FORGE_VERSION: "47.3.11"
       OPS: |
         Masunka
+        Tejk
     volumes:
       - data:/data
     restart: always
